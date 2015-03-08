@@ -1,0 +1,8 @@
+consumption<-read.csv("household_power_consumption.txt",sep=";")
+consumption$Time<-strptime(paste(consumption$Date,consumption$Time),"%d/%m/%Y %H:%M:%S")
+consumption$Date<-as.Date(consumption$Date,"%d/%m/%Y")
+consumptionData<-subset(consumption,Date=="2007-02-01" | Date=="2007-02-02")
+png("plot1.png",480,480)
+attach(consumptionData)
+plot(Time,Voltage)
+dev.off()
