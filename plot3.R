@@ -3,6 +3,7 @@ consumption<-read.csv("household_power_consumption.txt",sep=";",dec=".",na.strin
 consumption$Time<-strptime(paste(consumption$Date,consumption$Time),"%d/%m/%Y %H:%M:%S")
 consumption$Date<-as.Date(consumption$Date,"%d/%m/%Y")
 consumptionData<-subset(consumption,Date=="2007-02-01" | Date=="2007-02-02")
+
 png("plot3.png",480,480,bg="transparent")
 attach(consumptionData)
 plot(Time,Sub_metering_1,ylab="Energy sub metering",xlab="",type="l")
